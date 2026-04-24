@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Superшкола — магазин школьной одежды в Йошкар-Оле. Форма для девочек и мальчиков, спортивная одежда, комплекты Юнармии." />
+  <title>Superшкола — Школьная одежда в Йошкар-Оле</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & VARIABLES ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1a2a4a;
+      --blue: #2563eb;
+      --blue-light: #3b82f6;
+      --red: #dc2626;
+      --gold: #f59e0b;
+      --cream: #fafaf7;
+      --white: #ffffff;
+      --gray-50: #f8f9fa;
+      --gray-100: #f1f3f5;
+      --gray-200: #e9ecef;
+      --gray-500: #6c757d;
+      --gray-700: #495057;
+      --text: #1a2a4a;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 24px rgba(26,42,74,.10);
+      --shadow-md: 0 8px 40px rgba(26,42,74,.15);
+      --shadow-lg: 0 16px 64px rgba(26,42,74,.20);
+      --font-display: 'Unbounded', sans-serif;
+      --font-body: 'Nunito', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: inherit; border: none; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .section-tag {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+    .section-sub {
+      color: var(--gray-500);
+      font-size: 1.05rem;
+      margin-top: 12px;
+      max-width: 560px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: .95rem;
+      transition: transform .18s, box-shadow .18s, background .18s;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37,99,235,.35);
+    }
+    .btn-primary:hover { background: var(--blue-light); box-shadow: 0 6px 28px rgba(37,99,235,.45); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn-outline:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(220,38,38,.30);
+    }
+    .btn-red:hover { background: #b91c1c; transform: translateY(-2px); }
+
+    /* ===== PLACEHOLDER (заглушка для изображений/видео) ===== */
+    .placeholder {
+      background: linear-gradient(135deg, var(--gray-200) 0%, var(--gray-100) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--gray-500);
+      font-size: .85rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+    .placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(0,0,0,.03) 10px,
+        rgba(0,0,0,.03) 20px
+      );
+    }
+    .placeholder-icon { font-size: 2.5rem; opacity: .4; position: relative; }
+    .placeholder-text { position: relative; opacity: .7; text-align: center; }
+    .video-placeholder {
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      border-radius: var(--radius);
+      color: rgba(255,255,255,.7);
+    }
+    .play-btn-big {
+      width: 80px; height: 80px;
+      background: rgba(255,255,255,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 3px solid rgba(255,255,255,.3);
+      font-size: 2rem;
+      transition: background .2s;
+    }
+    .play-btn-big:hover { background: rgba(255,255,255,.25); }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(26,42,74,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 24px;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      white-space: nowrap;
+    }
+    .logo span { color: var(--gold); }
+    nav { display: flex; gap: 28px; align-items: center; }
+    nav a {
+      color: rgba(255,255,255,.75);
+      font-size: .875rem;
+      font-weight: 600;
+      transition: color .15s;
+    }
+    nav a:hover { color: #fff; }
+    .header-cta {
+      padding: 8px 20px;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: .85rem;
+      transition: background .15s, transform .15s;
+      white-space: nowrap;
+    }
+    .header-cta:hover { background: #fbbf24; transform: translateY(-1px); }
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; padding: 4px; }
+    .burger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--navy);
+      padding: 20px;
+      gap: 16px;
+    }
+    .mobile-nav a { color: rgba(255,255,255,.85); font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .mobile-nav.open { display: flex; }
+
+    /* ===== HERO ===== */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #243b6e 60%, #1e3a6e 100%);
+      color: #fff;
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(37,99,235,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(245,158,11,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,158,11,.18);
+      border: 1px solid rgba(245,158,11,.35);
+      color: var(--gold);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: .8rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .hero-tag::before { content: '📍'; }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero-title em { color: var(--gold); font-style: normal; }
+    .hero-sub {
+      color: rgba(255,255,255,.75);
+      font-size: 1.05rem;
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-map-note {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.6);
+      font-size: .85rem;
+    }
+    .hero-map-note strong { color: rgba(255,255,255,.85); }
+    .hero-img-wrap {
+      position: relative;
+      height: 400px;
+    }
+    .hero-placeholder {
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,.07);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: rgba(255,255,255,.5);
+      font-size: .9rem;
+    }
+    .hero-placeholder .ph-icon { font-size: 3rem; opacity: .4; }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 28px 0;
+    }
+    .stats-inner {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--blue);
+    }
+    .stat-label { font-size: .8rem; color: var(--gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+
+    /* ===== VIDEO ===== */
+    #video { padding: 80px 0; }
+    .video-wrap {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .video-ph {
+      width: 100%;
+      height: 420px;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      border-radius: 24px;
+    }
+    .video-ph p { color: rgba(255,255,255,.55); font-size: .9rem; }
+    .video-chapters {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .chapter {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--navy);
+      border-left: 3px solid var(--blue);
+    }
+    .chapter-icon { font-size: 1.2rem; }
+
+    /* ===== CATALOG ===== */
+    #catalog { padding: 80px 0; background: var(--gray-50); }
+    .catalog-head { text-align: center; margin-bottom: 48px; }
+    .catalog-head .section-sub { margin: 12px auto 0; }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .catalog-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .catalog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .catalog-img {
+      height: 240px;
+    }
+    .catalog-img .placeholder { height: 100%; border-radius: 0; }
+    .catalog-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .catalog-floor {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--blue);
+    }
+    .catalog-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--navy);
+    }
+    .catalog-items {
+      font-size: .85rem;
+      color: var(--gray-500);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .catalog-chip {
+      background: var(--gray-100);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: .78rem;
+    }
+    .catalog-card .btn { margin-top: auto; align-self: flex-start; padding: 10px 20px; font-size: .85rem; }
+
+    /* ===== SETS (комплекты) ===== */
+    #sets { padding: 80px 0; }
+    .sets-head { margin-bottom: 48px; }
+    .sets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .set-card {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .set-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .set-img { height: 200px; }
+    .set-img .placeholder { height: 100%; border-radius: 0; }
+    .set-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .set-name { font-family: var(--font-display); font-size: 1rem; font-weight: 900; color: var(--navy); }
+    .set-desc { font-size: .85rem; color: var(--gray-500); }
+    .set-price {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--red);
+      margin-top: auto;
+      padding-top: 12px;
+    }
+    .set-price small { font-size: .75rem; color: var(--gray-500); font-family: var(--font-body); font-weight: 600; }
+    .set-card .btn { margin: 0 20px 20px; padding: 10px 18px; font-size: .85rem; align-self: stretch; justify-content: center; }
+
+    /* ===== WHY ===== */
+    #why { padding: 80px 0; background: var(--navy); color: #fff; }
+    .why-head { margin-bottom: 48px; }
+    .why-head .section-tag { background: var(--gold); color: var(--navy); }
+    .why-head .section-title { color: #fff; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .why-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: background .2s;
+    }
+    .why-card:hover { background: rgba(255,255,255,.12); }
+    .why-icon { font-size: 2rem; margin-bottom: 14px; }
+    .why-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .why-text { font-size: .87rem; color: rgba(255,255,255,.65); line-height: 1.6; }
+
+    /* ===== FITTING ===== */
+    #fitting { padding: 80px 0; }
+    .fitting-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .fitting-block {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .fitting-ph { height: 220px; }
+    .fitting-ph .placeholder { height: 100%; border-radius: 0; }
+    .fitting-body { padding: 24px; }
+    .fitting-body h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+    .fitting-body p { font-size: .9rem; color: var(--gray-700); line-height: 1.7; }
+
+    /* ===== PROMO ===== */
+    #promo { padding: 80px 0; background: var(--gray-50); }
+    .promo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .promo-banner {
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .promo-banner.red { background: linear-gradient(135deg, var(--red) 0%, #b91c1c 100%); color: #fff; }
+    .promo-banner.gold { background: linear-gradient(135deg, var(--gold) 0%, #d97706 100%); color: var(--navy); }
+    .promo-banner::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+    }
+    .promo-percent {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .promo-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }
+    .promo-desc { font-size: .9rem; opacity: .85; }
+    .promo-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.25);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-top: 8px;
+      align-self: flex-start;
+    }
+
+    /* ===== REVIEWS ===== */
+    #reviews { padding: 80px 0; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .review-stars { color: var(--gold); font-size: 1.1rem; }
+    .review-text { font-size: .92rem; color: var(--gray-700); line-height: 1.7; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 1rem;
+    }
+    .review-name { font-weight: 700; font-size: .9rem; color: var(--navy); }
+    .review-role { font-size: .78rem; color: var(--gray-500); }
+    .review-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .review-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 100px;
+      border: 2px solid var(--gray-200);
+      font-weight: 700;
+      font-size: .9rem;
+      color: var(--navy);
+      transition: border-color .2s, background .2s;
+    }
+    .review-link:hover { border-color: var(--blue); background: var(--blue); color: #fff; }
+
+    /* ===== CONTACTS ===== */
+    #contacts { padding: 80px 0; background: var(--gray-50); }
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-block {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-ico { font-size: 1.6rem; flex-shrink: 0; }
+    .contact-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--gray-500); font-weight: 700; margin-bottom: 4px; }
+    .contact-value { font-weight: 700; color: var(--navy); font-size: .97rem; line-height: 1.5; }
+    .map-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      height: 100%;
+      min-height: 380px;
+    }
+    .map-ph {
+      height: 100%;
+      background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      border-radius: 20px;
+    }
+    .map-ph-icon { font-size: 3.5rem; }
+    .map-ph-text { text-align: center; font-weight: 700; color: var(--navy); }
+    .map-ph-sub { font-size: .85rem; color: var(--gray-500); font-weight: 400; margin-top: 4px; }
+    .transport-info {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+    }
+    .transport-info h4 { font-family: var(--font-display); font-size: .95rem; font-weight: 900; color: var(--navy); margin-bottom: 12px; }
+    .transport-info li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: .88rem;
+      color: var(--gray-700);
+    }
+    .transport-info li:last-child { border-bottom: none; }
+    .route-num {
+      background: var(--blue);
+      color: #fff;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+    .qr-block {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .qr-ph {
+      width: 80px; height: 80px;
+      background: var(--gray-100);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .qr-text { font-size: .85rem; color: var(--gray-700); line-height: 1.6; }
+    .qr-text strong { color: var(--navy); }
+
+    /* ===== LOYALTY ===== */
+    #loyalty { padding: 60px 0; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
+    .loyalty-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .loyalty-text { flex: 1; min-width: 260px; }
+    .loyalty-text h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: var(--navy); margin-bottom: 12px; }
+    .loyalty-text p { color: var(--gray-700); font-size: 1rem; line-height: 1.7; }
+    .loyalty-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+      min-width: 260px;
+    }
+    .loyalty-step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+    }
+    .step-num {
+      width: 40px; height: 40px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900;
+      font-family: var(--font-display);
+      flex-shrink: 0;
+    }
+    .step-text { font-size: .9rem; color: var(--navy); font-weight: 600; }
+
+    /* ===== SUBSCRIBE ===== */
+    #subscribe { padding: 60px 0; background: var(--blue); color: #fff; }
+    .subscribe-inner {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .subscribe-text { flex: 1; min-width: 240px; }
+    .subscribe-text h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 900; margin-bottom: 10px; }
+    .subscribe-text p { color: rgba(255,255,255,.75); font-size: 1rem; }
+    .subscribe-form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      flex: 1;
+      min-width: 260px;
+    }
+    .subscribe-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 14px 20px;
+      border-radius: 100px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.25);
+    }
+    .subscribe-form input::placeholder { color: rgba(255,255,255,.55); }
+    .subscribe-form input:focus { border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.2); }
+    .subscribe-form button {
+      background: var(--white);
+      color: var(--blue);
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: .95rem;
+      font-family: var(--font-body);
+      transition: background .15s;
+    }
+    .subscribe-form button:hover { background: #f0f6ff; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.65);
+      padding: 48px 0 28px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-brand .logo { font-size: 1.15rem; margin-bottom: 12px; }
+    .footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 280px; margin-bottom: 20px; }
+    .social-row { display: flex; gap: 12px; }
+    .social-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      transition: background .15s;
+      color: #fff;
+    }
+    .social-btn:hover { background: var(--blue); }
+    .footer-col h4 { color: #fff; font-weight: 700; font-size: .9rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .06em; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: .87rem; color: rgba(255,255,255,.55); transition: color .15s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 24px;
+      font-size: .8rem;
+    }
+
+    /* ===== CHATBOT ===== */
+    .chatbot-trigger {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 60px;
+      height: 60px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 6px 28px rgba(37,99,235,.45);
+      z-index: 200;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      border: none;
+    }
+    .chatbot-trigger:hover { transform: scale(1.08); box-shadow: 0 8px 36px rgba(37,99,235,.55); }
+    .chatbot-bubble {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      background: var(--white);
+      border-radius: 16px 16px 4px 16px;
+      padding: 14px 18px;
+      box-shadow: var(--shadow-md);
+      font-size: .87rem;
+      font-weight: 600;
+      color: var(--navy);
+      max-width: 220px;
+      z-index: 200;
+      animation: bubbleFade 3s ease forwards;
+      animation-delay: 1.5s;
+    }
+    @keyframes bubbleFade {
+      0%,80% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(10px); pointer-events: none; }
+    }
+    .chatbot-window {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      width: 320px;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      max-height: 420px;
+    }
+    .chatbot-window.open { display: flex; }
+    .chatbot-header {
+      background: var(--blue);
+      color: #fff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chatbot-avatar { font-size: 1.4rem; }
+    .chatbot-name { font-weight: 700; font-size: .95rem; }
+    .chatbot-status { font-size: .75rem; opacity: .75; }
+    .chatbot-close { margin-left: auto; background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; opacity: .7; }
+    .chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .chat-msg {
+      max-width: 240px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: .88rem;
+      line-height: 1.5;
+    }
+    .chat-msg.bot { background: var(--gray-100); color: var(--navy); border-radius: 4px 14px 14px 14px; }
+    .chat-msg.user { background: var(--blue); color: #fff; align-self: flex-end; border-radius: 14px 4px 14px 14px; }
+    .chatbot-input {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      border-top: 1px solid var(--gray-100);
+    }
+    .chatbot-input input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 2px solid var(--gray-200);
+      border-radius: 100px;
+      outline: none;
+      font-size: .88rem;
+      font-family: var(--font-body);
+      transition: border-color .15s;
+    }
+    .chatbot-input input:focus { border-color: var(--blue); }
+    .chatbot-input button {
+      width: 38px; height: 38px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: background .15s;
+    }
+    .chatbot-input button:hover { background: var(--blue-light); }
+    .chat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 16px 12px;
+    }
+    .chat-chip {
+      background: var(--gray-100);
+      border: none;
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: .8rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+      color: var(--navy);
+      font-weight: 600;
+      transition: background .15s;
+    }
+    .chat-chip:hover { background: var(--blue); color: #fff; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp .6s ease forwards; }
+    .delay-1 { animation-delay: .1s; opacity: 0; }
+    .delay-2 { animation-delay: .2s; opacity: 0; }
+    .delay-3 { animation-delay: .3s; opacity: 0; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-img-wrap { height: 280px; }
+      .catalog-grid { grid-template-columns: 1fr; }
+      .fitting-grid { grid-template-columns: 1fr; }
+      .promo-grid { grid-template-columns: 1fr; }
+      .contacts-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { display: none; }
+      .burger { display: flex; }
+      #hero { padding: 60px 0 48px; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { justify-content: center; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .chatbot-window { width: calc(100vw - 40px); right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header role="banner">
+  <div class="container header-inner">
+    <a href="#hero" class="logo" aria-label="Superшкола — главная">Super<span>школа</span></a>
+    <nav aria-label="Основная навигация">
+      <a href="#catalog">Каталог</a>
+      <a href="#sets">Комплекты</a>
+      <a href="#promo">Акции</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="#contacts" class="header-cta" aria-label="Адрес и контакты">📍 Йошкар-Ола</a>
+    <button class="burger" aria-label="Открыть меню" aria-expanded="false" id="burger-btn">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация">
+    <a href="#catalog">Каталог</a>
+    <a href="#sets">Готовые комплекты</a>
+    <a href="#why">Почему мы</a>
+    <a href="#promo">Акции</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-tag">Йошкар-Ола</div>
+      <h1 class="hero-title fade-up" id="hero-title">
+        Школьная одежда —<br/>всё для учёбы<br/>и <em>спорта</em> в одном месте
+      </h1>
+      <p class="hero-sub fade-up delay-1">
+        Стильная форма для девочек и мальчиков, спортивная одежда и комплекты Юнармии. Приходите — мы рядом!
+      </p>
+      <div class="hero-btns fade-up delay-2">
+        <a href="#catalog" class="btn btn-primary">📚 Смотреть каталог</a>
+        <a href="#contacts" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.4);">📍 Как найти</a>
+      </div>
+      <div class="hero-map-note fade-up delay-3">
+        <span>🚶</span>
+        <span><strong>10 минут пешком</strong> от «Национальной Школы искусств» на Набережной</span>
+      </div>
+    </div>
+    <div class="hero-img-wrap" aria-hidden="true">
+      <div class="hero-placeholder">
+        <div class="ph-icon">👗</div>
+        <div>Фото детей в школьной форме</div>
+        <div style="font-size:.78rem;opacity:.6;">на фоне достопримечательностей Йошкар-Олы</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats-bar" aria-label="Ключевые показатели">
+  <div class="container stats-inner">
+    <div class="stat">
+      <span class="stat-num">2+</span>
+      <span class="stat-label">этажа ассортимента</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">30%</span>
+      <span class="stat-label">скидка школам-партнёрам</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">ГОСТ</span>
+      <span class="stat-label">фабричное производство</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">6 дн</span>
+      <span class="stat-label">Пн–Сб 10:00–19:00</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEO ===== -->
+<section id="video" aria-labelledby="video-title">
+  <div class="container">
+    <span class="section-tag">Видео-тур</span>
+    <h2 class="section-title" id="video-title">Загляните к нам<br/>не выходя из дома</h2>
+    <p class="section-sub">Короткий видеообзор магазина: оба этажа, примерочные и зона отдыха</p>
+    <div class="video-wrap" style="margin-top:32px;">
+      <div class="video-ph" role="img" aria-label="Место для видео-презентации магазина">
+        <div class="play-btn-big" aria-hidden="true">▶</div>
+        <p>Видео-презентация магазина (1–2 мин)</p>
+        <p style="opacity:.4;font-size:.8rem;">Будет добавлено при публикации</p>
+      </div>
+    </div>
+    <div class="video-chapters" aria-label="Содержание видео">
+      <div class="chapter"><span class="chapter-icon">🏢</span>Фасад и парковка</div>
+      <div class="chapter"><span class="chapter-icon">👗</span>1-й этаж — для девочек</div>
+      <div class="chapter"><span class="chapter-icon">👔</span>2-й этаж — для мальчиков</div>
+      <div class="chapter"><span class="chapter-icon">⚽</span>Спорт и Юнармия</div>
+      <div class="chapter"><span class="chapter-icon">🪞</span>Примерочные</div>
+      <div class="chapter"><span class="chapter-icon">😊</span>Довольные покупатели</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CATALOG ===== -->
+<section id="catalog" aria-labelledby="catalog-title">
+  <div class="container">
+    <div class="catalog-head">
+      <span class="section-tag">Каталог</span>
+      <h2 class="section-title" id="catalog-title">Три больших раздела<br/>на любой вкус</h2>
+      <p class="section-sub">Выберите нужный раздел и найдите идеальный образ для первого сентября</p>
+    </div>
+    <div class="catalog-grid" role="list">
+
+      <article class="catalog-card" role="listitem" aria-label="Для девочек">
+        <div class="catalog-img">
+          <div class="placeholder" role="img" aria-label="Фото школьной формы для девочек">
+            <span class="placeholder-icon">👧</span>
+            <span class="placeholder-text">Форма для девочек<br/>(фото)</span>
+          </div>
+        </div>
+        <div class="catalog-body">
+          <span class="catalog-floor">📍 1-й этаж</span>
+          <h3 class="catalog-title">Для девочек</h3>
+          <div class="catalog-items" aria-label="Товары в разделе">
+            <span class="catalog-chip">Юбки</span>
+            <span class="catalog-chip">Сарафаны</span>
+            <span class="catalog-chip">Блузки</span>
+            <span class="catalog-chip">Брюки</span>
+            <span class="catalog-chip">Жилеты</span>
+          </div>
+          <a href="#contacts" class="btn btn-primary" aria-label="Смотреть всё для девочек на 1-м этаже">Смотреть всё на 1-м этаже →</a>
+        </div>
+      </article>
+
+      <article class="catalog-card" role="listitem" aria-label="Для мальчиков">
+        <div class="catalog-img">
+          <div class="placeholder" role="img" aria-label="Фото школьной формы для мальчиков">
+            <span class="placeholder-icon">👦</span>
+            <span class="placeholder-text">Форма для мальчиков<br/>(фото)</span>
+          </div>
+        </div>
+        <div class="catalog-body">
+          <span class="catalog-floor">📍 2-й этаж</span>
+          <h3 class="catalog-title">Для мальчиков</h3>
+          <div class="catalog-items">
+            <span class="catalog-chip">Брюки</span>
+            <span class="catalog-chip">Пиджаки</span>
+            <span class="catalog-chip">Рубашки</span>
+            <span class="catalog-chip">Костюмы</span>
+          </div>
+          <a href="#contacts" class="btn btn-primary" aria-label="Смотреть всё для мальчиков на 2-м этаже">Смотреть всё на 2-м этаже →</a>
+        </div>
+      </article>
+
+      <article class="catalog-card" role="listitem" aria-label="Спорт и Юнармия">
+        <div class="catalog-img">
+          <div class="placeholder" role="img" aria-label="Фото спортивной одежды и формы Юнармии">
+            <span class="placeholder-icon">🏅</span>
+            <span class="placeholder-text">Спорт и Юнармия<br/>(фото)</span>
+          </div>
+        </div>
+        <div class="catalog-body">
+          <span class="catalog-floor">📍 Отдельный раздел</span>
+          <h3 class="catalog-title">Спорт и Юнармия</h3>
+          <div class="catalog-items">
+            <span class="catalog-chip">Спортивные брюки</span>
+            <span class="catalog-chip">Футболки</span>
+            <span class="catalog-chip">Поло</span>
+            <span class="catalog-chip">Юнармия</span>
+          </div>
+          <a href="#contacts" class="btn btn-primary" aria-label="Смотреть спортивную форму и одежду Юнармии">Смотреть →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SETS ===== -->
+<section id="sets" aria-labelledby="sets-title">
+  <div class="container">
+    <div class="sets-head">
+      <span class="section-tag">Готовые комплекты</span>
+      <h2 class="section-title" id="sets-title">Решения под ключ —<br/>бери и иди в школу</h2>
+      <p class="section-sub">Подобрали всё, что нужно. Приходите с ребёнком — подберём и примерим!</p>
+    </div>
+    <div class="sets-grid" role="list">
+
+      <article class="set-card" role="listitem" aria-label="Базовый комплект для девочки">
+        <div class="set-img">
+          <div class="placeholder" role="img" aria-label="Фото комплекта для девочки: юбка, блузка, жилет">
+            <span class="placeholder-icon">👧✨</span>
+            <span class="placeholder-text">Фото комплекта</span>
+          </div>
+        </div>
+        <div class="set-body">
+          <h3 class="set-name">Базовый для девочки</h3>
+          <p class="set-desc">Юбка + блузка + жилет — классический образ для любой школы</p>
+          <div class="set-price">4 920 ₽ <small>/ комплект</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-primary" aria-label="Заказать базовый комплект для девочки">Выбрать размер</a>
+      </article>
+
+      <article class="set-card" role="listitem" aria-label="Полный комплект для мальчика">
+        <div class="set-img">
+          <div class="placeholder" role="img" aria-label="Фото комплекта для мальчика: костюм и рубашка">
+            <span class="placeholder-icon">👦🎩</span>
+            <span class="placeholder-text">Фото комплекта</span>
+          </div>
+        </div>
+        <div class="set-body">
+          <h3 class="set-name">Полный для мальчика</h3>
+          <p class="set-desc">Костюм (брюки и пиджак) + рубашка — солидный и удобный образ</p>
+          <div class="set-price">7 050 ₽ <small>/ комплект</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-primary" aria-label="Заказать полный комплект для мальчика">Выбрать размер</a>
+      </article>
+
+      <article class="set-card" role="listitem" aria-label="Комплект для физкультуры">
+        <div class="set-img">
+          <div class="placeholder" role="img" aria-label="Фото спортивного комплекта: брюки и футболка">
+            <span class="placeholder-icon">⚽👟</span>
+            <span class="placeholder-text">Фото комплекта</span>
+          </div>
+        </div>
+        <div class="set-body">
+          <h3 class="set-name">Физкультура</h3>
+          <p class="set-desc">Спортивные брюки + футболка — всё для урока физкультуры</p>
+          <div class="set-price">1 890 ₽ <small>/ комплект</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-primary" aria-label="Заказать спортивный комплект для физкультуры">Выбрать размер</a>
+      </article>
+
+      <article class="set-card" role="listitem" aria-label="Комплект Юнармии">
+        <div class="set-img">
+          <div class="placeholder" role="img" aria-label="Фото формы Юнармии: брюки и поло">
+            <span class="placeholder-icon">🎖️🏅</span>
+            <span class="placeholder-text">Фото комплекта</span>
+          </div>
+        </div>
+        <div class="set-body">
+          <h3 class="set-name">Юнармия</h3>
+          <p class="set-desc">Брюки + поло — официальная форма для движения Юнармия</p>
+          <div class="set-price">4 000 ₽ <small>/ комплект</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-primary" aria-label="Заказать комплект Юнармии">Выбрать размер</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section id="why" aria-labelledby="why-title">
+  <div class="container">
+    <div class="why-head">
+      <span class="section-tag">Почему мы</span>
+      <h2 class="section-title" id="why-title">Родители выбирают нас<br/>— и вот почему</h2>
+    </div>
+    <div class="why-grid" role="list">
+      <div class="why-card" role="listitem">
+        <div class="why-icon" aria-hidden="true">🏆</div>
+        <h3 class="why-title">Качество по ГОСТу</h3>
+        <p class="why-text">Износостойкие ткани, не вызывающие аллергии. Фабричное производство, соответствующее ГОСТу.</p>
+      </div>
+      <div class="why-card" role="listitem">
+        <div class="why-icon" aria-hidden="true">🏢</div>
+        <h3 class="why-title">Удобное разделение</h3>
+        <p class="why-text">Девочки — 1-й этаж, мальчики — 2-й этаж. Не нужно искать в одной большой куче.</p>
+      </div>
+      <div class="why-card" role="listitem">
+        <div class="why-icon" aria-hidden="true">💰</div>
+        <h3 class="why-title">Скидки 30% для школ</h3>
+        <p class="why-text">Школы-партнёры получают скидку 30% на одежду собственного бренда «Superшкола».</p>
+      </div>
+      <div class="why-card" role="listitem">
+        <div class="why-icon" aria-hidden="true">🤝</div>
+        <h3 class="why-title">Сервис и консультации</h3>
+        <p class="why-text">Продавцы-консультанты помогут подобрать нужный размер. Возможность предзаказа онлайн.</p>
+      </div>
+      <div class="why-card" role="listitem">
+        <div class="why-icon" aria-hidden="true">📍</div>
+        <h3 class="why-title">Удобное расположение</h3>
+        <p class="why-text">В Сомбатхее: 15 минут от Автовокзала и 10 минут от Патриаршей площади на Набережной. Парковка у магазина.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FITTING ===== -->
+<section id="fitting" aria-labelledby="fitting-title">
+  <div class="container">
+    <span class="section-tag">Примерка</span>
+    <h2 class="section-title" id="fitting-title">Примерка без хлопот</h2>
+    <p class="section-sub">Создали все условия, чтобы выбор был лёгким и приятным</p>
+    <div class="fitting-grid">
+
+      <div class="fitting-block">
+        <div class="fitting-ph">
+          <div class="placeholder" role="img" aria-label="Фото примерочных с хорошим освещением и зеркалами">
+            <span class="placeholder-icon">🪞</span>
+            <span class="placeholder-text">Фото просторных примерочных</span>
+          </div>
+        </div>
+        <div class="fitting-body">
+          <h3>Просторные примерочные</h3>
+          <p>Хорошее освещение и зеркала в полный рост. Никакой толкотни — у каждого ребёнка своё пространство для примерки.</p>
+        </div>
+      </div>
+
+      <div class="fitting-block">
+        <div class="fitting-ph">
+          <div class="placeholder" role="img" aria-label="Фото зоны ожидания с мягкими диванами и игрушками">
+            <span class="placeholder-icon">🛋️</span>
+            <span class="placeholder-text">Фото зоны ожидания</span>
+          </div>
+        </div>
+        <div class="fitting-body">
+          <h3>Уютная зона ожидания</h3>
+          <p>Для пап, бабушек и маленьких детей: мягкие диваны, игрушки, журналы, кулер с водой. Никто не скучает, пока идёт примерка.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROMO ===== -->
+<section id="promo" aria-labelledby="promo-title">
+  <div class="container">
+    <span class="section-tag">Акции</span>
+    <h2 class="section-title" id="promo-title">Выгодные предложения</h2>
+    <p class="section-sub">Сезонные скидки и специальные программы для постоянных покупателей</p>
+    <div class="promo-grid" role="list">
+
+      <div class="promo-banner red" role="listitem" aria-label="Скидка 30% для школ-партнёров">
+        <div class="promo-percent" aria-hidden="true">−30%</div>
+        <div class="promo-title">Школам-партнёрам</div>
+        <div class="promo-desc">Скидка 30% на школьную одежду собственного бренда «Superшкола» для организаций-партнёров</div>
+        <div class="promo-tag">🏫 Для организаций</div>
+      </div>
+
+      <div class="promo-banner gold" role="listitem" aria-label="Накопительные бонусы по карте лояльности">
+        <div class="promo-percent" aria-hidden="true">🎁</div>
+        <div class="promo-title">Бонусная карта</div>
+        <div class="promo-desc">Накапливайте бонусные рубли за каждую покупку и получайте скидку на следующий визит</div>
+        <div class="promo-tag">💳 Программа лояльности</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOYALTY ===== -->
+<section id="loyalty" aria-labelledby="loyalty-title">
+  <div class="container loyalty-inner">
+    <div class="loyalty-text">
+      <span class="section-tag">Программа лояльности</span>
+      <h2 id="loyalty-title">Накопите баллы — получите скидку</h2>
+      <p style="margin-top:14px;">Каждая покупка приносит бонусные рубли на вашу карту. Чем больше покупаете — тем выгоднее следующая покупка.</p>
+      <a href="#contacts" class="btn btn-primary" style="margin-top:24px;">Узнать подробности</a>
+    </div>
+    <div class="loyalty-steps" aria-label="Шаги программы лояльности">
+      <div class="loyalty-step">
+        <div class="step-num" aria-hidden="true">1</div>
+        <div class="step-text">Получите бонусную карту при первой покупке</div>
+      </div>
+      <div class="loyalty-step">
+        <div class="step-num" aria-hidden="true">2</div>
+        <div class="step-text">Накапливайте рубли за каждую покупку</div>
+      </div>
+      <div class="loyalty-step">
+        <div class="step-num" aria-hidden="true">3</div>
+        <div class="step-text">Используйте баллы как скидку при следующем визите</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" aria-labelledby="reviews-title">
+  <div class="container">
+    <span class="section-tag">Отзывы</span>
+    <h2 class="section-title" id="reviews-title">Что говорят родители<br/>и руководители школ</h2>
+    <div class="reviews-grid" role="list">
+
+      <article class="review-card" role="listitem">
+        <div class="review-stars" aria-label="Оценка: 5 звёзд">★★★★★</div>
+        <p class="review-text">«Очень удобно, что всё разделено по этажам. Пришли с сыном и дочкой — не пришлось бегать по всему магазину. Консультанты помогли с размерами, примерили всё быстро.»</p>
+        <div class="review-author">
+          <div class="review-avatar" aria-hidden="true">М</div>
+          <div>
+            <div class="review-name">Марина С.</div>
+            <div class="review-role">Мама двух школьников</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card" role="listitem">
+        <div class="review-stars" aria-label="Оценка: 5 звёзд">★★★★★</div>
+        <p class="review-text">«Отличное качество ткани — уже второй год покупаем здесь, форма держит вид весь учебный год. Хорошая скидка для нашей школы как партнёра.»</p>
+        <div class="review-author">
+          <div class="review-avatar" aria-hidden="true">О</div>
+          <div>
+            <div class="review-name">Ольга Р.</div>
+            <div class="review-role">Директор начальной школы</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card" role="listitem">
+        <div class="review-stars" aria-label="Оценка: 5 звёзд">★★★★★</div>
+        <p class="review-text">«Удобное расположение, есть парковка. Зона ожидания порадовала — муж с младшим ребёнком спокойно подождали. Купили всё за один раз!»</p>
+        <div class="review-author">
+          <div class="review-avatar" aria-hidden="true">А</div>
+          <div>
+            <div class="review-name">Анна К.</div>
+            <div class="review-role">Родитель, постоянный покупатель</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <div class="review-links" aria-label="Ссылки на отзывы на других платформах">
+      <a href="#" class="review-link" aria-label="Читать отзывы родителей на Яндексе">
+        🟡 Отзывы родителей на Яндексе
+      </a>
+      <a href="#" class="review-link" aria-label="Отзывы директоров школ на официальном сайте">
+        🏫 Отзывы директоров школ
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTS ===== -->
+<section id="contacts" aria-labelledby="contacts-title">
+  <div class="container">
+    <span class="section-tag">Контакты</span>
+    <h2 class="section-title" id="contacts-title">Как нас найти</h2>
+    <p class="section-sub">Йошкар-Ола, ул. Воинов Интернационалистов, 29</p>
+    <div class="contacts-grid">
+
+      <div class="contact-info">
+
+        <div class="contact-block">
+          <div class="contact-ico" aria-hidden="true">📍</div>
+          <div>
+            <div class="contact-label">Адрес</div>
+            <div class="contact-value">Йошкар-Ола,<br/>ул. Воинов Интернационалистов, 29<br/><small style="color:var(--gray-500);font-weight:500;">В районе Сомбатхей</small></div>
+          </div>
+        </div>
+
+        <div class="contact-block">
+          <div class="contact-ico" aria-hidden="true">🕐</div>
+          <div>
+            <div class="contact-label">Режим работы</div>
+            <div class="contact-value">Пн–Сб: 10:00 – 19:00<br/>Вс: 10:00 – 18:00</div>
+          </div>
+        </div>
+
+        <div class="contact-block">
+          <div class="contact-ico" aria-hidden="true">📞</div>
+          <div>
+            <div class="contact-label">Телефон</div>
+            <div class="contact-value"><a href="tel:" style="color:var(--blue);">Уточните при посещении</a></div>
+          </div>
+        </div>
+
+        <div class="transport-info">
+          <h4>🚌 Общественный транспорт</h4>
+          <ul aria-label="Маршруты общественного транспорта">
+            <li>
+              <span class="route-num">ост.</span>
+              Остановка: Гос. архив
+            </li>
+            <li>🚶 15 мин от Автовокзала</li>
+            <li>🚶 10 мин от Патриаршей площади (Набережная)</li>
+          </ul>
+        </div>
+
+        <div class="qr-block">
+          <div class="qr-ph" aria-hidden="true">📱</div>
+          <div class="qr-text">
+            <strong>QR-код с маршрутом</strong><br/>
+            Отсканируйте, чтобы получить маршрут от остановки «Гос. архив» прямо на телефон
+          </div>
+        </div>
+
+        <div class="contact-block">
+          <div class="contact-ico" aria-hidden="true">🏢</div>
+          <div>
+            <div class="contact-label">Фото входа</div>
+            <div style="width:100%;height:100px;background:var(--gray-100);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gray-500);font-size:.82rem;margin-top:8px;" role="img" aria-label="Место для фото входа в магазин и вывески">📷 Фото входа и вывески</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="map-wrap">
+        <div class="map-ph" role="img" aria-label="Карта с меткой магазина Superшкола">
+          <div class="map-ph-icon" aria-hidden="true">🗺️</div>
+          <div class="map-ph-text">
+            Карта с меткой магазина
+            <div class="map-ph-sub">Йошкар-Ола, Воинов Интернационалистов, 29</div>
+          </div>
+          <a href="https://yandex.ru/maps/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:8px;" aria-label="Открыть маршрут в Яндекс Картах">Открыть в Яндекс Картах</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SUBSCRIBE ===== -->
+<section id="subscribe" aria-labelledby="subscribe-title">
+  <div class="container subscribe-inner">
+    <div class="subscribe-text">
+      <h2 id="subscribe-title">Будьте в курсе акций и новинок!</h2>
+      <p>Подпишитесь на рассылку — первыми узнаете о скидках к новому учебному году</p>
+    </div>
+    <div class="subscribe-form">
+      <label for="email-input" class="sr-only">Ваш email</label>
+      <input type="email" id="email-input" placeholder="Ваш email" autocomplete="email" />
+      <button type="button" id="subscribe-btn" aria-label="Подписаться на рассылку">Подписаться</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer role="contentinfo">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Super<span>школа</span></div>
+      <p>Ваш магазин школьной одежды в Йошкар-Оле. Качественная форма для девочек и мальчиков, спортивная одежда и комплекты Юнармии.</p>
+      <div class="social-row" aria-label="Социальные сети">
+        <a href="#" class="social-btn" aria-label="ВКонтакте">VK</a>
+        <a href="#" class="social-btn" aria-label="Telegram">TG</a>
+        <a href="#" class="social-btn" aria-label="Одноклассники">OK</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Каталог</h4>
+      <ul>
+        <li><a href="#catalog">Для девочек</a></li>
+        <li><a href="#catalog">Для мальчиков</a></li>
+        <li><a href="#catalog">Спорт и Юнармия</a></li>
+        <li><a href="#sets">Готовые комплекты</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Информация</h4>
+      <ul>
+        <li><a href="#why">Почему мы</a></li>
+        <li><a href="#promo">Акции</a></li>
+        <li><a href="#loyalty">Программа лояльности</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Superшкола. ИП Моисеева С.Н.</span>
+    <span>Йошкар-Ола, ул. Воинов Интернационалистов, 29</span>
+  </div>
+</footer>
+
+<!-- ===== CHATBOT ===== -->
+<div class="chatbot-bubble" role="alert" aria-live="polite">
+  💬 Нужна помощь? Задайте вопрос консультанту!
+</div>
+<button class="chatbot-trigger" id="chatbot-trigger" aria-label="Открыть чат с консультантом" aria-expanded="false" aria-controls="chatbot-window">
+  💬
+</button>
+<div class="chatbot-window" id="chatbot-window" role="dialog" aria-modal="true" aria-label="Чат с консультантом">
+  <div class="chatbot-header">
+    <div class="chatbot-avatar" aria-hidden="true">👩‍💼</div>
+    <div>
+      <div class="chatbot-name">Консультант</div>
+      <div class="chatbot-status">Онлайн · обычно отвечает быстро</div>
+    </div>
+    <button class="chatbot-close" id="chatbot-close" aria-label="Закрыть чат">✕</button>
+  </div>
+  <div class="chatbot-messages" id="chatbot-msgs" aria-live="polite" aria-label="Сообщения чата">
+    <div class="chat-msg bot">Здравствуйте! 👋 Рады помочь вам с выбором школьной формы. Что вас интересует?</div>
+  </div>
+  <div class="chat-chips" role="group" aria-label="Быстрые вопросы">
+    <button class="chat-chip" data-msg="Какие размеры есть?">📏 Размеры</button>
+    <button class="chat-chip" data-msg="Какой адрес магазина?">📍 Адрес</button>
+    <button class="chat-chip" data-msg="Как попасть в магазин?">🚌 Маршрут</button>
+    <button class="chat-chip" data-msg="Есть ли скидки?">💰 Скидки</button>
+  </div>
+  <div class="chatbot-input">
+    <label for="chat-inp" class="sr-only">Введите сообщение</label>
+    <input type="text" id="chat-inp" placeholder="Напишите вопрос..." autocomplete="off" />
+    <button id="chat-send" aria-label="Отправить сообщение">➤</button>
+  </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;}</style>
+
+<script>
+  // ---- Burger menu ----
+  const burgerBtn = document.getElementById('burger-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+  burgerBtn.addEventListener('click', function() {
+    const isOpen = mobileNav.classList.toggle('open');
+    burgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+  mobileNav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileNav.classList.remove('open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ---- Subscribe ----
+  document.getElementById('subscribe-btn').addEventListener('click', function() {
+    const input = document.getElementById('email-input');
+    const val = input.value.trim();
+    if (!val || !val.includes('@')) {
+      input.style.borderColor = '#dc2626';
+      input.focus();
+      return;
+    }
+    input.style.borderColor = '';
+    this.textContent = '✓ Подписано!';
+    this.disabled = true;
+    input.value = '';
+    input.disabled = true;
+  });
+
+  // ---- Chatbot ----
+  const chatTrigger = document.getElementById('chatbot-trigger');
+  const chatWindow = document.getElementById('chatbot-window');
+  const chatClose = document.getElementById('chatbot-close');
+  const chatMsgs = document.getElementById('chatbot-msgs');
+  const chatInp = document.getElementById('chat-inp');
+  const chatSend = document.getElementById('chat-send');
+
+  const botAnswers = {
+    'размер': 'Наша одежда представлена в размерном ряду 28–46, рост 110–164 см. Для точного подбора приходите с ребёнком — консультанты помогут с примеркой!',
+    'адрес': 'Мы находимся по адресу: Йошкар-Ола, ул. Воинов Интернационалистов, 29. Работаем Пн–Сб 10:00–19:00, Вс 10:00–18:00.',
+    'маршрут': 'До нас: 15 мин от Автовокзала, 10 мин от Патриаршей площади (Набережная). Ориентируйтесь на ост. «Гос. архив». Есть парковка!',
+    'скидк': 'Школам-партнёрам предоставляем скидку 30% на одежду бренда «Superшкола». Также есть накопительная бонусная карта для всех покупателей!',
+    'default': 'Спасибо за ваш вопрос! Рекомендуем позвонить нам или прийти в магазин — консультанты подробно ответят на все вопросы. Работаем Пн–Сб 10:00–19:00.'
+  };
+
+  function addMsg(text, type) {
+    var d = document.createElement('div');
+    d.className = 'chat-msg ' + type;
+    d.textContent = text;
+    chatMsgs.appendChild(d);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  }
+
+  function botReply(userText) {
+    var lc = userText.toLowerCase();
+    var answer = botAnswers['default'];
+    for (var key in botAnswers) {
+      if (lc.includes(key)) { answer = botAnswers[key]; break; }
+    }
+    setTimeout(function() { addMsg(answer, 'bot'); }, 600);
+  }
+
+  chatTrigger.addEventListener('click', function() {
+    var isOpen = chatWindow.classList.toggle('open');
+    chatTrigger.setAttribute('aria-expanded', isOpen);
+    if (isOpen) chatInp.focus();
+  });
+  chatClose.addEventListener('click', function() {
+    chatWindow.classList.remove('open');
+    chatTrigger.setAttribute('aria-expanded', 'false');
+  });
+  chatSend.addEventListener('click', function() {
+    var msg = chatInp.value.trim();
+    if (!msg) return;
+    addMsg(msg, 'user');
+    chatInp.value = '';
+    botReply(msg);
+  });
+  chatInp.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') chatSend.click();
+  });
+  document.querySelectorAll('.chat-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      var msg = this.getAttribute('data-msg');
+      addMsg(msg, 'user');
+      botReply(msg);
+    });
+  });
+
+  // ---- Scroll fade-in ----
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.why-card, .catalog-card, .set-card, .review-card, .fitting-block').forEach(function(el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      obs.observe(el);
+    });
+  }
+</script>
+
+</body>
+</html>
